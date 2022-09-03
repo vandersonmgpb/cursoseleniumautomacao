@@ -119,7 +119,7 @@ public class TesteCampoTreinamento {
 		botao.click();
 		
 		Assert.assertEquals("Obrigado!", botao.getAttribute("value"));
-//		driver.quit();
+		driver.quit();
 	}
 	
 	@Test
@@ -153,4 +153,6 @@ public class TesteCampoTreinamento {
 				driver.findElement(By.className("facilAchar")).getText());
 		driver.quit();
 	}
+	
+	
 }
