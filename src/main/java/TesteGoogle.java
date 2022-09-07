@@ -1,8 +1,5 @@
-import java.awt.Point;
-
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -15,6 +12,9 @@ public class TesteGoogle {
 		driver.manage().window().maximize();
 		driver.get("http://www.google.com");
 		Assert.assertEquals("Google", driver.getTitle());
+		
+//		digitar um testo pra o google pesquisar?????
+//		
 		driver.quit();
 	}
 
