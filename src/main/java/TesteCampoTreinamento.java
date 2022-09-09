@@ -109,7 +109,7 @@ public class TesteCampoTreinamento {
 		
 		Assert.assertEquals("Obrigado!", botao.getAttribute("value"));
 	}
-/*	
+	
 	@Test
 	@Ignore
 	public void deveInteragirComLinks() {
@@ -119,7 +119,7 @@ public class TesteCampoTreinamento {
 		Assert.assertEquals("Voltou!", driver.findElement(By.id("resultado")).getText());
 	
 	}
-*/
+
 	
 	@Test
 	public void deveBuscarTextosNaPagina() {
