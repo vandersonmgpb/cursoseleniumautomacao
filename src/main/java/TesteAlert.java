@@ -12,6 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class TesteAlert {
 	
 	private WebDriver driver;
+	
 	@Before
 	public void inicializa() {
 		driver = new FirefoxDriver();
@@ -73,7 +74,7 @@ public class TesteAlert {
 		Assert.assertEquals("Era 15?", alerta.getText());
 		alerta.accept();
 		Assert.assertEquals(":D", alerta.getText());
-		alerta.accept();
+//		alerta.accept();
 		
 	}
 }

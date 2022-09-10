@@ -9,10 +9,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
-
 public class TesteCadastro {
 	
 	private WebDriver driver;
+	private DSL dsl;
 	
 	@Before
 	public void inicializa() {
@@ -20,6 +20,7 @@ public class TesteCadastro {
 		driver = new FirefoxDriver();
 		driver.manage().window().setSize(new Dimension(1200, 765));
 		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
+		dsl = new DSL(driver);
 	}
 	
 	@After
@@ -28,23 +29,21 @@ public class TesteCadastro {
 	}
 	@Test
 	public void deveRealizarCadastroComSucesso() {
-		driver.findElement(By.id("elementosForm:nome")).sendKeys("Vanderson");
-		driver.findElement(By.id("elementosForm:sobrenome")).sendKeys("Araujo");
-		driver.findElement(By.id("elementosForm:sexo:0")).click();
-		driver.findElement(By.id("elementosForm:comidafavorita:0")).click();
-		new Select(driver.findElement(By.id("elementosForm:escolaridade")))
-			.selectByVisibleText("Superior");
-		new Select(driver.findElement(By.id("elementosForm:esportes")))
-			.selectByVisibleText("Futebol");
-		driver.findElement(By.id("elementosForm:cadastrar")).click();
+		dsl.escreve("elementosForm:nome", "Vanderson");
+		dsl.escreve("elementosForm:sobrenome", "Araujo");
+		dsl.clicarRadio("elementosForm:sexo:0");
+		dsl.clicarRadio("elementosForm:comidafavorita:0");
+		dsl.selecionarCombo("elementosForm:escolaridade", "Superior");
+		dsl.selecionarCombo("elementosForm:esportes", "Futebol");
+		dsl.clicarBotao("elementosForm:cadastrar");
 		
-		Assert.assertTrue(driver.findElement(By.id("resultado")).getText().startsWith("Cadastrado"));
-		Assert.assertTrue(driver.findElement(By.id("descNome")).getText().endsWith("Vanderson"));
-		Assert.assertEquals("Sobrenome: Araujo", driver.findElement(By.id("descSobrenome")).getText());
-		Assert.assertEquals("Sexo: Masculino", driver.findElement(By.id("descSexo")).getText());
-		Assert.assertEquals("Comida: Carne", driver.findElement(By.id("descComida")).getText());
-		Assert.assertEquals("Escolaridade: superior", driver.findElement(By.id("descEscolaridade")).getText());
-		Assert.assertEquals("Esportes: Futebol", driver.findElement(By.id("descEsportes")).getText());
+		Assert.assertTrue(dsl.obterTexto("resultado").startsWith("Cadastrado"));
+		Assert.assertTrue(dsl.obterTexto("descNome").endsWith("Vanderson"));
+		Assert.assertEquals("Sobrenome: Araujo", dsl.obterTexto("descSobrenome"));
+		Assert.assertEquals("Sexo: Masculino", dsl.obterTexto("descSexo"));
+		Assert.assertEquals("Comida: Carne", dsl.obterTexto("descComida"));
+		Assert.assertEquals("Escolaridade: superior", dsl.obterTexto("descEscolaridade"));
+		Assert.assertEquals("Esportes: Futebol", dsl.obterTexto("descEsportes"));
 		
 	}
 	
@@ -53,15 +52,10 @@ public class TesteCadastro {
 		driver.findElement(By.id("elementosForm:cadastrar")).click();
 		Alert alert = driver.switchTo().alert();
 		Assert.assertEquals("Nome eh obrigatorio", alert.getText());
-		driver.quit();		
 	}
 	
 	@Test
 	public void deveValidarSobrenomeObrigatorio() {
-		WebDriver driver = new FirefoxDriver();
-		driver.manage().window().setSize(new Dimension(1200, 765));
-		driver.get("file:///" + System.getProperty("user.dir") + "/src/main/resources/componentes.html");
-	
 		driver.findElement(By.id("elementosForm:nome")).sendKeys("José da Silva");
 		driver.findElement(By.id("elementosForm:cadastrar")).click();
 		Alert alert = driver.switchTo().alert();

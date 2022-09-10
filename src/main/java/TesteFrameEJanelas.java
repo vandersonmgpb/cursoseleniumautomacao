@@ -25,6 +25,7 @@ public class TesteFrameEJanelas {
 	public void finalizar() {
 		driver.quit();
 	}
+	
 	@Test
 	public void deveInteragirComFrames() {
 		driver.switchTo().frame("frame1");
@@ -36,7 +37,6 @@ public class TesteFrameEJanelas {
 		
 		driver.switchTo().defaultContent();
 		driver.findElement(By.id("elementosForm:nome")).sendKeys(msg);
-		
 	}
 	
 	@Test
@@ -58,6 +58,5 @@ public class TesteFrameEJanelas {
 		driver.findElement(By.tagName("textarea")).sendKeys("Deu certo?");
 		driver.switchTo().window((String)driver.getWindowHandles().toArray()[0]);
 		driver.findElement(By.tagName("textarea")).sendKeys("E agora?");
-		
 	}
 }
