@@ -29,8 +29,8 @@ public class TesteCadastro {
 	}
 	@Test
 	public void deveRealizarCadastroComSucesso() {
-		dsl.escreve("elementosForm:nome", "Vanderson");
-		dsl.escreve("elementosForm:sobrenome", "Araujo");
+		dsl.escrever("elementosForm:nome", "Vanderson");
+		dsl.escrever("elementosForm:sobrenome", "Araujo");
 		dsl.clicarRadio("elementosForm:sexo:0");
 		dsl.clicarRadio("elementosForm:comidafavorita:0");
 		dsl.selecionarCombo("elementosForm:escolaridade", "Superior");
