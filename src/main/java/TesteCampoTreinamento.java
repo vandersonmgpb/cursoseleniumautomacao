@@ -64,7 +64,7 @@ public class TesteCampoTreinamento {
 	@Test
 	public void deveVerificarValoresCombo() {
 		Assert.assertEquals(8, dsl.obterQuantidadeOpcoesCombo("elementosForm:escolaridade"));
-		Assert.assertTrue(dsl.verificarOpcaoCombo("elementosForm:escolaridade", "Superior"));
+		Assert.assertTrue(dsl.verificarOpcaoCombo("elementosForm:escolaridade", "Mestrado"));
 		
 	}
 	
@@ -72,7 +72,7 @@ public class TesteCampoTreinamento {
 	public void deveVerificarValoresComboMultiplo() {
 		dsl.selecionarCombo("elementosForm:esportes", "Futebol");
 		dsl.selecionarCombo("elementosForm:esportes", "Karate");
-		dsl.selecionarCombo("elementosForm:esportes", "O que eh esportes?");
+		dsl.selecionarCombo("elementosForm:esportes", "O que eh esporte?");
 		
 		List<String> opcoesMarcadas = dsl.obterValoresCombo("elementosForm:esportes");
 		Assert.assertEquals(3, opcoesMarcadas.size());
@@ -80,7 +80,7 @@ public class TesteCampoTreinamento {
 		dsl.deselecionarCombo("elementosForm:esportes", "Karate");
 		opcoesMarcadas = dsl.obterValoresCombo("elementosForm:esportes");
 		Assert.assertEquals(2, opcoesMarcadas.size());
-		Assert.assertTrue(opcoesMarcadas.containsAll(Arrays.asList("Karate", "O que eh esporte?")));
+		Assert.assertTrue(opcoesMarcadas.containsAll(Arrays.asList("Futebol", "O que eh esporte?")));
 		
 	}
 	
