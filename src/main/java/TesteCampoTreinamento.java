@@ -24,10 +24,10 @@ public class TesteCampoTreinamento {
 		dsl = new DSL(driver);
 	}
 	
-/*	@After
+	@After
 	public void finalizar() {
 		driver.quit();
-	}*/
+	}
 	
 	
 	@Test
