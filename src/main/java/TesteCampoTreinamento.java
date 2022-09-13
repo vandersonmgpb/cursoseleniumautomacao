@@ -24,16 +24,24 @@ public class TesteCampoTreinamento {
 		dsl = new DSL(driver);
 	}
 	
-	@After
+/*	@After
 	public void finalizar() {
 		driver.quit();
-	}
+	}*/
 	
 	
 	@Test
 	public void testeTextField() {	
 		dsl.escrever("elementosForm:nome", "teste campo");
 		Assert.assertEquals("teste campo", dsl.obterValorCampo("elementosForm:nome"));
+	}
+	
+	@Test
+	public void testTextFieldDuplo() {
+		dsl.escrever("elementosForm:nome", "Francisco ");
+		Assert.assertEquals("Francisco ", dsl.obterValorCampo("elementosForm:nome"));
+		dsl.escrever("elementosForm:nome", "Araujo");
+		Assert.assertEquals("Araujo", dsl.obterValorCampo("elementosForm:nome"));
 	}
 		
 	@Test
