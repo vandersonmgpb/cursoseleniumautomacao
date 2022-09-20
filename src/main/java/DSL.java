@@ -174,4 +174,19 @@ public class DSL {
 		return js.executeScript(cmd, param);
 		
 	}
+	
+	/*********Tabela*********/
+	
+	public int clicarBotaoTabela(String colunaBrusca, String coluna, String idTabela) {
+	WebElement tabela = driver.findElement(By.xpath("//*[@id='elementosForm:tableUsuarios']"));
+	List<WebElement>colunas = tabela.findElements(By.xpath(".//th"));
+	int idColuna = -1;
+	for(int i = 0; i< colunas.size(); i++) {
+		if(colunas.get(i).getText().equals(colunaBusca)) {
+			idColuna = i;
+			break;
+			
+		}
+	}
+	return idColuna;
 }
