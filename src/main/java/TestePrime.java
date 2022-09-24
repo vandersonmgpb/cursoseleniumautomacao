@@ -17,7 +17,6 @@ public class TestePrime {
 	
 		driver = new FirefoxDriver();
 		driver.manage().window().setSize(new Dimension(1200, 765));
-		driver.get("https://www.primefaces.org/showcase/ui/input/oneRadio.xhtml?jfwid=9fb36");
 		dsl = new DSL(driver);
 	}
 	
@@ -28,9 +27,18 @@ public class TestePrime {
 	
 	@Test
 	public void deveInteragirComRadioPrime() {
+		driver.get("https://www.primefaces.org/showcase/ui/input/oneRadio.xhtml?jfwid=9fb36");
 		dsl.clicarRadio(By.xpath("//input[@id='j_idt340:console:0']/../..//span"));
 		Assert.assertTrue(dsl.isRadioMarcado("j_idt340:console:0"));
 		dsl.clicarRadio(By.xpath("//label[.='Option2']/..//span"));
 		Assert.assertTrue(dsl.isRadioMarcado("j_idt340:console:1"));
+	}
+	
+	@Test
+	public void deveInteragirComSelectPrime() {
+		driver.get("https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml?jfwid=753dd");
+		
+		dsl.clicarRadio(By.xpath("//*[@id='j_idt339:option_label']/../..//span"));
+		dsl.clicarRadio(By.xpath("//*[@id='j_idt339:option_label']//li[.="Option 1"]"));
 	}
 }
