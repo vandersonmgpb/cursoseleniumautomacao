@@ -102,9 +102,9 @@ public class DSL {
 		return false;
 	}
 	
-	public void selecionarCombroPrime(String radical, String valor) {
+	public void selecionarComboPrime(String radical, String valor) {
 		clicarRadio(By.xpath("//*[@id='"+radical+"_input']/../..//span"));
-		clicarRadio(By.xpath("//*[@id='j_idt719:console_items']//li[.='PS4']"));
+		clicarRadio(By.xpath("//*[@id='"+radical+"_items']//li[.='"+valor+"']"));
 	}
 	
 	/********** Botao **********/

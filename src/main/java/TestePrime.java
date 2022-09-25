@@ -37,9 +37,7 @@ public class TestePrime {
 	@Test
 	public void deveInteragirComSelectPrime() {
 		driver.get("https://www.primefaces.org/showcase-v8/ui/input/oneMenu.xhtml");
-		
-		dsl.clicarRadio(By.xpath("//*[@id='j_idt719:console_label']/../..//span"));
-		dsl.clicarRadio(By.xpath("//*[@id='j_idt719:console_items']//li[.='PS4']"));
-		Assert.assertEquals("PS4", dsl.obterTexto("j_idt719:console_label"));
+		dsl.selecionarComboPrime("j_idt719:console", "Xbox One");
+		Assert.assertEquals("Xbox One", dsl.obterTexto("j_idt719:console_label"));
 	}
 }
