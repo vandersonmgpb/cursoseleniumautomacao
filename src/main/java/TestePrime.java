@@ -36,9 +36,10 @@ public class TestePrime {
 	
 	@Test
 	public void deveInteragirComSelectPrime() {
-		driver.get("https://www.primefaces.org/showcase/ui/input/oneMenu.xhtml?jfwid=753dd");
+		driver.get("https://www.primefaces.org/showcase-v8/ui/input/oneMenu.xhtml");
 		
-		dsl.clicarRadio(By.xpath("//*[@id='j_idt339:option_label']/../..//span"));
-		dsl.clicarRadio(By.xpath("//*[@id='j_idt339:option_label']//li[.="Option 1"]"));
+		dsl.clicarRadio(By.xpath("//*[@id='j_idt719:console_label']/../..//span"));
+		dsl.clicarRadio(By.xpath("//*[@id='j_idt719:console_items']//li[.='PS4']"));
+		Assert.assertEquals("PS4", dsl.obterTexto("j_idt719:console_label"));
 	}
 }
